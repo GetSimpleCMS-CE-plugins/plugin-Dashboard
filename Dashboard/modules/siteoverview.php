@@ -7,6 +7,7 @@
  * Default W: 12
  * Default H: 2
  */
+ 
 if (!defined('IN_GS')) { die('You cannot load this page directly.'); }
 
 // ── Counts ────────────────────────────────────────────────

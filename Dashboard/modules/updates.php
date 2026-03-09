@@ -9,6 +9,9 @@
  */
 if (!defined('IN_GS')) { die('You cannot load this page directly.'); }
 
+// Unique ID to avoid conflicts between modules (optional)
+$uid = 'upd_' . substr(md5(__FILE__), 0, 6);
+
 global $site_version_no, $plugin_info, $live_plugins;
 
 // ── System update check ───────────────────────────────────
@@ -58,7 +61,7 @@ try {
 ?>
 
 <style>
-.upd-line {
+#<?php echo $uid ?> .upd-line {
     display: flex;
     align-items: center;
     gap: 8px;
@@ -66,18 +69,18 @@ try {
     font-size: 13px;
     border-bottom: 1px solid #f3f3f3;
 }
-.upd-line:last-child { border-bottom: none; }
-.upd-text { flex: 1; }
-.upd-link {
+#<?php echo $uid ?> .upd-line:last-child { border-bottom: none; }
+#<?php echo $uid ?> .upd-text { flex: 1; }
+#<?php echo $uid ?> .upd-link {
     font-size: 11px;
     color: #4a90d9;
     text-decoration: none;
     white-space: nowrap;
 }
-.upd-link:hover { text-decoration: underline; }
+#<?php echo $uid ?> .upd-link:hover { text-decoration: underline; }
 </style>
 
-<div>
+<div id="<?php echo $uid ?>">
 	<h3><svg xmlns="http://www.w3.org/2000/svg" style="vertical-align:middle;" width="24" height="24" viewBox="0 0 20 20"><rect width="20" height="20" fill="none"/><path fill="currentColor" d="M5.7 9c.4-2 2.2-3.5 4.3-3.5c1.5 0 2.7.7 3.5 1.8l1.7-2C14 3.9 12.1 3 10 3C6.5 3 3.6 5.6 3.1 9H1l3.5 4L8 9zm9.8-2L12 11h2.3c-.5 2-2.2 3.5-4.3 3.5c-1.5 0-2.7-.7-3.5-1.8l-1.7 1.9C6 16.1 7.9 17 10 17c3.5 0 6.4-2.6 6.9-6H19z"/></svg> Updates Available</h3>
     <!-- System -->
     <div class="upd-line">

@@ -202,7 +202,7 @@ function dash_main() {
 		#sidebar {display:none;}
         .bodycontent { display: inline; }
 		h2, span#dashGreeting{color:#607D8B!important;}
-		h3{color:#607D8B;}
+		h3{color:#607D8B; margin:0 0 10px 0;}
 		.grid-stack-item-content h3 {opacity:.80;}
 		.grid-stack-item-content {
 			background: #fff;

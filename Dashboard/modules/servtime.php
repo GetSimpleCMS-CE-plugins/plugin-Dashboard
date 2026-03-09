@@ -7,6 +7,11 @@
  * Default W: 4
  * Default H: 2
  */
+ 
+if (!defined('IN_GS')) { die('You cannot load this page directly.'); }
+
+// Unique ID to avoid conflicts between modules (optional)
+$uid = 'st_' . substr(md5(__FILE__), 0, 6);
 ?>
 
 <?php
@@ -21,39 +26,39 @@ if (defined('GSTIMEZONE') && GSTIMEZONE != '') {
 ?>
 
 <style>
-.gs-time-panel {
+#<?php echo $uid ?> {
 	font-family: system-ui, sans-serif;
 }
 
-.gs-time-panel h3 {
+#<?php echo $uid ?> h3 {
 	margin-top: 0;
 	margin-bottom: 10px;
 }
 
-.time-row {
+#<?php echo $uid ?> .time-row {
 	display: flex;
 	justify-content: space-between;
 	margin-bottom: 5px;
 }
 
-.time-label {
+#<?php echo $uid ?> .time-label {
 	font-weight: 600;
 	color: #555;
 }
 
-.time-value {
+#<?php echo $uid ?> .time-value {
 	font-family: monospace;
 	color:#4B8CC4;
 }
 
-.diff-row {
+#<?php echo $uid ?> .diff-row {
 	margin-top: 5px;
 	padding-top: 5px;
 	border-top: 1px solid #eee;
 	font-size:.8em;
 }
 
-.time-warning {
+#<?php echo $uid ?> .time-warning {
 	background: #fff3cd;
 	border: 1px solid #ffeeba;
 	padding: 10px;
@@ -63,12 +68,12 @@ if (defined('GSTIMEZONE') && GSTIMEZONE != '') {
 }
 </style>
 
-<div class="gs-time-panel">
+<div id="<?php echo $uid ?>">
 	<h3><svg xmlns="http://www.w3.org/2000/svg" style="vertical-align:middle;" width="24" height="24" viewBox="0 0 20 20"><rect width="20" height="20" fill="none"/><path fill="currentColor" d="M10.475 2.17a.75.75 0 0 0-.95 0l-2.75 2.25a.75.75 0 0 0 .95 1.16L10 3.72l2.275 1.86a.75.75 0 1 0 .95-1.16zm2.75 13.41l-2.75 2.25a.75.75 0 0 1-.95 0l-2.75-2.25a.75.75 0 0 1 .95-1.16L10 16.28l2.275-1.861a.75.75 0 1 1 .95 1.16M10.75 8.75a.75.75 0 1 1-1.5 0a.75.75 0 0 1 1.5 0M10 12a.75.75 0 1 0 0-1.5a.75.75 0 0 0 0 1.5m6-2.5a1.5 1.5 0 0 1 3 0v1a1.5 1.5 0 0 1-3 0zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 1 0v-1a.5.5 0 0 0-.5-.5m-11-1A1.5 1.5 0 0 0 5 9.5v1a1.5 1.5 0 0 0 3 0v-1A1.5 1.5 0 0 0 6.5 8M6 9.5a.5.5 0 0 1 1 0v1a.5.5 0 0 1-1 0zm6 0a1.5 1.5 0 0 1 3 0v1a1.5 1.5 0 0 1-3 0zm1.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 1 0v-1a.5.5 0 0 0-.5-.5m-11-1A1.5 1.5 0 0 0 1 9.5v1a1.5 1.5 0 0 0 3 0v-1A1.5 1.5 0 0 0 2.5 8M2 9.5a.5.5 0 0 1 1 0v1a.5.5 0 0 1-1 0z"/></svg> Time Status</h3>
 
 	<div class="time-row">
-		<div class="time-label">Local Time (<span id="localTimezone"></span>)</div>
-		<div class="time-value" id="localTime"></div>
+		<div class="time-label">Local Time (<span id="<?php echo $uid ?>-localTz"></span>)</div>
+		<div class="time-value" id="<?php echo $uid ?>-localTime"></div>
 	</div>
 
 	<?php if ($serverTimezone): ?>
@@ -77,10 +82,7 @@ if (defined('GSTIMEZONE') && GSTIMEZONE != '') {
 				Server Time (<?php echo htmlspecialchars($serverTimezone); ?>)
 			</div>
 			<div class="time-value">
-				<?php 
-					// FORMAT STRING (Server Time)
-					echo date('H:i (Y-m-d)');
-				?>
+				<?php echo date('H:i (Y-m-d)'); ?>
 			</div>
 		</div>
 	<?php else: ?>
@@ -93,7 +95,7 @@ if (defined('GSTIMEZONE') && GSTIMEZONE != '') {
 	<?php if ($serverISO): ?>
 		<div class="time-row diff-row">
 			<div class="time-label">Time Difference</div>
-			<div class="time-value" id="timeDiff"></div>
+			<div class="time-value" id="<?php echo $uid ?>-timeDiff"></div>
 		</div>
 	<?php endif; ?>
 </div>
@@ -104,7 +106,7 @@ function updateAllTimes() {
 	const now = new Date();
 	
 	const localTz = Intl.DateTimeFormat().resolvedOptions().timeZone;
-	document.getElementById('localTimezone').textContent = localTz;
+	document.getElementById('<?php echo $uid ?>-localTz').textContent = localTz;
 
 	// FORMAT STRING (Local Time)
 	//const format = "Y-m-d, H:i:s";
@@ -126,7 +128,7 @@ function updateAllTimes() {
 	}
 
 	// Update local time display
-	document.getElementById('localTime').textContent =
+	document.getElementById('<?php echo $uid ?>-localTime').textContent =
 		formatDate(now, format);
 
 	<?php if ($serverTimezone): ?>
@@ -153,7 +155,7 @@ function updateAllTimes() {
 			(diffMinutes > 0 ? "ahead" : "behind");
 	}
 
-	document.getElementById('timeDiff').textContent = text;
+	document.getElementById('<?php echo $uid ?>-timeDiff').textContent = text;
 
 	<?php endif; ?>
 }

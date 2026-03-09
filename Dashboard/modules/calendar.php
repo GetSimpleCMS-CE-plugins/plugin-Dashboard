@@ -7,10 +7,15 @@
  * Default W: 4
  * Default H: 4
  */
+ 
+if (!defined('IN_GS')) { die('You cannot load this page directly.'); }
+
+// Unique ID to avoid conflicts between modules (optional)
+$uid = 'sc_' . substr(md5(__FILE__), 0, 6);
 ?>
 
 <style>
-#cal_clock {
+#<?php echo $uid ?>-clock {
 	color:var(--main-color);
 	text-align: center;
 	font-size: 1.5rem;
@@ -20,21 +25,21 @@
 	opacity: 0.75;
 }
 
-#calendar {
+#<?php echo $uid ?>-cal {
 	width: 90%;
 	max-width: 480px;
 	margin: auto;
 	font-family: system-ui, sans-serif;
 }
 
-.cal-header {
+#<?php echo $uid ?>-cal .cal-header {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 	margin-bottom: 8px;
 }
 
-.cal-nav {
+#<?php echo $uid ?>-cal .cal-nav {
 	background: none;
 	border: none;
 	font-size: 18px;
@@ -42,7 +47,7 @@
 	width: 28px;
 }
 
-.cal-today {
+#<?php echo $uid ?>-cal .cal-today {
 	font-size: 12px;
 	border: 1px solid #ccc;
 	background: #f7f7f7;
@@ -51,13 +56,13 @@
 	cursor: pointer;
 }
 
-.cal-grid {
+#<?php echo $uid ?>-cal .cal-grid {
 	display: grid;
 	grid-template-columns: repeat(7, 1fr);
 	gap: 4px;
 }
 
-.cal-title {
+#<?php echo $uid ?>-cal .cal-title {
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -69,20 +74,21 @@
 	opacity: .7;
 }
 
-.cal-icon svg {
+#<?php echo $uid ?>-cal .cal-icon svg {
 	width: 16px;
 	height: 16px;
 	opacity: .8;
-	/*vertical-align: middle;*/
+	vertical-align: middle;
+	opacity: .5;
 }
 
-.cal-dayname {
+#<?php echo $uid ?>-cal .cal-dayname {
 	text-align: center;
 	font-size: 12px;
 	opacity: .6;
 }
 
-.cal-day {
+#<?php echo $uid ?>-cal .cal-day {
 	text-align: center;
 	padding: 4px;
 	border-radius: 4px;
@@ -90,21 +96,21 @@
 	position: relative;
 }
 
-.cal-day:hover {
+#<?php echo $uid ?>-cal .cal-day:hover {
 	background: #eee;
 }
 
-.cal-day.today {
+#<?php echo $uid ?>-cal .cal-day.today {
 	background: var(--main-color);
-	opacity: 0.5;
+	opacity: 0.4;
 	color: rgba(255, 255, 255, 1) !important;
 }
 
-.cal-day.weekend {
+#<?php echo $uid ?>-cal .cal-day.weekend {
 	color: #c33;
 }
 
-.cal-event::after {
+#<?php echo $uid ?>-cal .cal-event::after {
 	content: "";
 	width: 4px;
 	height: 4px;
@@ -117,13 +123,13 @@
 }
 </style>
 
-<div id="cal_clock"></div>
+<div id="<?php echo $uid ?>-clock"></div>
 
-<div id="calendar"></div>
+<div id="<?php echo $uid ?>-cal"></div>
 
 <script>
 (function() {
-    var clockEl = document.getElementById("cal_clock");
+    var clockEl = document.getElementById("<?php echo $uid ?>-clock");
     function updateClock() {
         clockEl.textContent = new Intl.DateTimeFormat(navigator.language, {
             timeStyle: 'medium'
@@ -135,12 +141,9 @@
 </script>
 
 <script>
-document.addEventListener("DOMContentLoaded", () => {
-    cal = document.getElementById("calendar"); // move this inside
-    renderCalendar();
-});
+(function() {
 
-let cal; // declare outside, assign inside
+const calEl = document.getElementById("<?php echo $uid ?>-cal");
 
 let date = new Date();
 const locale = navigator.language;
@@ -176,15 +179,15 @@ function renderCalendar() {
 		year: "numeric"
 	}).format(date);
 
-	cal.innerHTML = `
+	calEl.innerHTML = `
 <div class="cal-header">
 	<button class="cal-nav" id="prev">‹</button>
 	<div class="cal-title">
-		<!--span class="cal-icon">
+		<span class="cal-icon">
 			<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
 				<path d="M7 2v2H5a2 2 0 0 0-2 2v2h18V6a2 2 0 0 0-2-2h-2V2h-2v2H9V2H7zm14 8H3v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V10z"/>
 			</svg>
-		</span-->
+		</span>
 		${title}
 	</div>
 	<button class="cal-nav" id="next">›</button>
@@ -195,7 +198,7 @@ function renderCalendar() {
 <div class="cal-grid" id="grid"></div>
 `;
 
-	const grid = document.getElementById("grid");
+	const grid = calEl.querySelector("#grid");
 
 	const weekdayFormatter =
 		new Intl.DateTimeFormat(locale, {
@@ -254,17 +257,17 @@ function renderCalendar() {
 		grid.appendChild(el);
 	}
 
-	document.getElementById("prev").onclick = () => {
+	calEl.querySelector("#prev").onclick = () => {
 		date.setMonth(date.getMonth() - 1);
 		renderCalendar();
 	};
 
-	document.getElementById("next").onclick = () => {
+	calEl.querySelector("#next").onclick = () => {
 		date.setMonth(date.getMonth() + 1);
 		renderCalendar();
 	};
 
-	const todayBtn = document.getElementById("todayBtn");
+	const todayBtn = calEl.querySelector("#todayBtn");
 
 	if (todayBtn) {
 		todayBtn.onclick = () => {
@@ -272,6 +275,9 @@ function renderCalendar() {
 			renderCalendar();
 		};
 	}
-
 }
+
+renderCalendar();
+
+})();
 </script>
