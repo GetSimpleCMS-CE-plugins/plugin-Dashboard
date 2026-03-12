@@ -1,7 +1,21 @@
 <?php
 if (!defined('IN_GS')) { die('You cannot load this page directly.'); }
 
-$thisfile = basename(__FILE__, ".php");
+$Dashboard = basename(__FILE__, ".php");
+
+# add in this plugin's language file
+i18n_merge($Dashboard) || i18n_merge($Dashboard, 'en_US');
+
+register_plugin(
+    $Dashboard,
+    'Dashboard',
+    '1.0',
+    'risingisland',
+    'https://www.getsimple-ce.ovh/',
+    'Admin dashboard shown after login.',
+    dash_page_type(),
+    'dash_router'
+);
 
 // -------------------------------------------------------
 // Module header parser
@@ -63,22 +77,11 @@ function dash_page_type() {
     return 'dashboard';
 }
 
-register_plugin(
-    $thisfile,
-    'Dashboard',
-    '1.0',
-    'risingisland',
-    'https://www.getsimple-ce.ovh/',
-    'Admin dashboard shown after login.',
-    dash_page_type(),
-    'dash_router'
-);
-
-add_action('nav-tab', 'createNavTab', array('dashboard', $thisfile,
+add_action('nav-tab', 'createNavTab', array('dashboard', $Dashboard,
     '<span title="Dashboard"><svg xmlns="http://www.w3.org/2000/svg" style="vertical-align:middle;" width="24" height="24" viewBox="0 0 24 24"><rect width="24" height="24" fill="none"/><path fill="currentColor" d="M6.25 3A3.25 3.25 0 0 0 3 6.25v11.5A3.25 3.25 0 0 0 6.25 21h5.772a6.5 6.5 0 0 1-.709-1.5H6.25a1.75 1.75 0 0 1-1.75-1.75V15.5h6.813a6.5 6.5 0 0 1 .709-1.5H10v-4h9.5v1.313a6.5 6.5 0 0 1 1.5.709V6.25A3.25 3.25 0 0 0 17.75 3zM4.5 6.25c0-.966.784-1.75 1.75-1.75H14v4H4.5zm0 3.75h4v4h-4zm15-1.5h-4v-4h2.25c.966 0 1.75.784 1.75 1.75zm-5.223 5.476a2 2 0 0 1-1.441 2.496l-.584.145a5.7 5.7 0 0 0 .006 1.807l.54.13a2 2 0 0 1 1.45 2.51l-.187.631c.44.386.94.7 1.485.922l.493-.519a2 2 0 0 1 2.899 0l.499.526a5.3 5.3 0 0 0 1.482-.913l-.198-.686a2 2 0 0 1 1.442-2.496l.583-.145a5.7 5.7 0 0 0-.006-1.807l-.54-.13a2 2 0 0 1-1.449-2.51l.186-.631a5.3 5.3 0 0 0-1.484-.922l-.493.518a2 2 0 0 1-2.9 0l-.498-.525c-.544.22-1.044.53-1.483.913zM17.5 19c-.8 0-1.45-.671-1.45-1.5c0-.828.65-1.5 1.45-1.5s1.45.672 1.45 1.5c0 .829-.65 1.5-1.45 1.5"/></svg></span>'
 ));
 
-add_action('settings-sidebar', 'createSideMenu', array($thisfile, 'Dashboard Settings <svg xmlns="http://www.w3.org/2000/svg" style="vertical-align:middle;" width="20" height="20" viewBox="0 0 24 24"><rect width="24" height="24" fill="none"/><path fill="currentColor" d="M6.25 3A3.25 3.25 0 0 0 3 6.25v11.5A3.25 3.25 0 0 0 6.25 21h5.772a6.5 6.5 0 0 1-.709-1.5H6.25a1.75 1.75 0 0 1-1.75-1.75V15.5h6.813a6.5 6.5 0 0 1 .709-1.5H10v-4h9.5v1.313a6.5 6.5 0 0 1 1.5.709V6.25A3.25 3.25 0 0 0 17.75 3zM4.5 6.25c0-.966.784-1.75 1.75-1.75H14v4H4.5zm0 3.75h4v4h-4zm15-1.5h-4v-4h2.25c.966 0 1.75.784 1.75 1.75zm-5.223 5.476a2 2 0 0 1-1.441 2.496l-.584.145a5.7 5.7 0 0 0 .006 1.807l.54.13a2 2 0 0 1 1.45 2.51l-.187.631c.44.386.94.7 1.485.922l.493-.519a2 2 0 0 1 2.899 0l.499.526a5.3 5.3 0 0 0 1.482-.913l-.198-.686a2 2 0 0 1 1.442-2.496l.583-.145a5.7 5.7 0 0 0-.006-1.807l-.54-.13a2 2 0 0 1-1.449-2.51l.186-.631a5.3 5.3 0 0 0-1.484-.922l-.493.518a2 2 0 0 1-2.9 0l-.498-.525c-.544.22-1.044.53-1.483.913zM17.5 19c-.8 0-1.45-.671-1.45-1.5c0-.828.65-1.5 1.45-1.5s1.45.672 1.45 1.5c0 .829-.65 1.5-1.45 1.5"/></svg>', 'dashboard-settings'));
+add_action('settings-sidebar', 'createSideMenu', array($Dashboard, 'Dashboard Settings <svg xmlns="http://www.w3.org/2000/svg" style="vertical-align:middle;" width="20" height="20" viewBox="0 0 24 24"><rect width="24" height="24" fill="none"/><path fill="currentColor" d="M6.25 3A3.25 3.25 0 0 0 3 6.25v11.5A3.25 3.25 0 0 0 6.25 21h5.772a6.5 6.5 0 0 1-.709-1.5H6.25a1.75 1.75 0 0 1-1.75-1.75V15.5h6.813a6.5 6.5 0 0 1 .709-1.5H10v-4h9.5v1.313a6.5 6.5 0 0 1 1.5.709V6.25A3.25 3.25 0 0 0 17.75 3zM4.5 6.25c0-.966.784-1.75 1.75-1.75H14v4H4.5zm0 3.75h4v4h-4zm15-1.5h-4v-4h2.25c.966 0 1.75.784 1.75 1.75zm-5.223 5.476a2 2 0 0 1-1.441 2.496l-.584.145a5.7 5.7 0 0 0 .006 1.807l.54.13a2 2 0 0 1 1.45 2.51l-.187.631c.44.386.94.7 1.485.922l.493-.519a2 2 0 0 1 2.899 0l.499.526a5.3 5.3 0 0 0 1.482-.913l-.198-.686a2 2 0 0 1 1.442-2.496l.583-.145a5.7 5.7 0 0 0-.006-1.807l-.54-.13a2 2 0 0 1-1.449-2.51l.186-.631a5.3 5.3 0 0 0-1.484-.922l-.493.518a2 2 0 0 1-2.9 0l-.498-.525c-.544.22-1.044.53-1.483.913zM17.5 19c-.8 0-1.45-.671-1.45-1.5c0-.828.65-1.5 1.45-1.5s1.45.672 1.45 1.5c0 .829-.65 1.5-1.45 1.5"/></svg>', 'dashboard-settings'));
 
 add_action('header', 'dash_reorder_tab');
 
@@ -403,7 +406,7 @@ function dash_main() {
 }
 
 // -------------------------------------------------------
-// Settings page (two tabs: Layout + Module Store)
+// Settings page (two tabs: Layout + Module Repo)
 // -------------------------------------------------------
 function dash_settings() {
     global $SITEURL;
@@ -502,7 +505,8 @@ function dash_settings() {
     <div class="bodycontent">
         <div class="maincontent">
             <header style="padding:10px 0 14px; border-bottom:1px solid #eee; margin-bottom:16px;">
-                <h3><svg xmlns="http://www.w3.org/2000/svg" style="vertical-align:bottom;" width="1.2em" height="1.2em" viewBox="0 0 24 24"><rect width="24" height="24" fill="none"/><path fill="currentColor" d="M6.25 3A3.25 3.25 0 0 0 3 6.25v11.5A3.25 3.25 0 0 0 6.25 21h5.772a6.5 6.5 0 0 1-.709-1.5H6.25a1.75 1.75 0 0 1-1.75-1.75V15.5h6.813a6.5 6.5 0 0 1 .709-1.5H10v-4h9.5v1.313a6.5 6.5 0 0 1 1.5.709V6.25A3.25 3.25 0 0 0 17.75 3zM4.5 6.25c0-.966.784-1.75 1.75-1.75H14v4H4.5zm0 3.75h4v4h-4zm15-1.5h-4v-4h2.25c.966 0 1.75.784 1.75 1.75zm-5.223 5.476a2 2 0 0 1-1.441 2.496l-.584.145a5.7 5.7 0 0 0 .006 1.807l.54.13a2 2 0 0 1 1.45 2.51l-.187.631c.44.386.94.7 1.485.922l.493-.519a2 2 0 0 1 2.899 0l.499.526a5.3 5.3 0 0 0 1.482-.913l-.198-.686a2 2 0 0 1 1.442-2.496l.583-.145a5.7 5.7 0 0 0-.006-1.807l-.54-.13a2 2 0 0 1-1.449-2.51l.186-.631a5.3 5.3 0 0 0-1.484-.922l-.493.518a2 2 0 0 1-2.9 0l-.498-.525c-.544.22-1.044.53-1.483.913zM17.5 19c-.8 0-1.45-.671-1.45-1.5c0-.828.65-1.5 1.45-1.5s1.45.672 1.45 1.5c0 .829-.65 1.5-1.45 1.5"/></svg> Dashboard Settings</h3>
+                <h3><svg xmlns="http://www.w3.org/2000/svg" style="vertical-align:bottom;" width="1.2em" height="1.2em" viewBox="0 0 24 24"><rect width="24" height="24" fill="none"/><path fill="currentColor" d="M6.25 3A3.25 3.25 0 0 0 3 6.25v11.5A3.25 3.25 0 0 0 6.25 21h5.772a6.5 6.5 0 0 1-.709-1.5H6.25a1.75 1.75 0 0 1-1.75-1.75V15.5h6.813a6.5 6.5 0 0 1 .709-1.5H10v-4h9.5v1.313a6.5 6.5 0 0 1 1.5.709V6.25A3.25 3.25 0 0 0 17.75 3zM4.5 6.25c0-.966.784-1.75 1.75-1.75H14v4H4.5zm0 3.75h4v4h-4zm15-1.5h-4v-4h2.25c.966 0 1.75.784 1.75 1.75zm-5.223 5.476a2 2 0 0 1-1.441 2.496l-.584.145a5.7 5.7 0 0 0 .006 1.807l.54.13a2 2 0 0 1 1.45 2.51l-.187.631c.44.386.94.7 1.485.922l.493-.519a2 2 0 0 1 2.899 0l.499.526a5.3 5.3 0 0 0 1.482-.913l-.198-.686a2 2 0 0 1 1.442-2.496l.583-.145a5.7 5.7 0 0 0-.006-1.807l-.54-.13a2 2 0 0 1-1.449-2.51l.186-.631a5.3 5.3 0 0 0-1.484-.922l-.493.518a2 2 0 0 1-2.9 0l-.498-.525c-.544.22-1.044.53-1.483.913zM17.5 19c-.8 0-1.45-.671-1.45-1.5c0-.828.65-1.5 1.45-1.5s1.45.672 1.45 1.5c0 .829-.65 1.5-1.45 1.5"/></svg> <?php echo i18n_r("Dashboard/lang_Dashboard_Settings");?></h3>
+				<p><?php echo i18n_r("Dashboard/lang_Description");?></p>
             </header>
 
             <!-- Tab bar -->
@@ -554,7 +558,7 @@ function dash_settings() {
                 <?php endif; ?>
             </div>
 
-            <!-- Tab 2: Module Store -->
+            <!-- Tab 2: Module Repo -->
             <div class="dash-tab-panel" id="dash-panel-modules">
                 <div id="mstore-container">
                     <p style="color:#aaa; font-size:13px;">Click to load available modules...</p>
@@ -700,7 +704,7 @@ function dash_settings() {
                     container.innerHTML = '<p style="color:#e74c3c;">Failed to load modules.</p>';
                 }
             } catch(e) {
-                container.innerHTML = '<p style="color:#e74c3c;">Unexpected error loading module store.</p>';
+                container.innerHTML = '<p style="color:#e74c3c;">Unexpected error loading module repo.</p>';
             }
         };
         xhr.onerror = function() {
