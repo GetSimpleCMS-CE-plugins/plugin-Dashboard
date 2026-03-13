@@ -44,13 +44,13 @@ class ModuleInstaller {
         $id  = isset($_POST['id'])  ? trim($_POST['id'])  : '';
 
         if (!$url || !$id) {
-            echo json_encode(array('status' => 'error', 'message' => 'Missing parameters.'));
+            echo json_encode(array('status' => 'error', 'message' => i18n_r('Dashboard/lang_Missing_parameters') . '.'));
             return;
         }
 
         // Only allow zip downloads from github.com
         if (!preg_match('#^https://github\.com/#', $url)) {
-            echo json_encode(array('status' => 'error', 'message' => 'Invalid download URL.'));
+            echo json_encode(array('status' => 'error', 'message' => i18n_r('Dashboard/lang_Invalid_URL') . '.'));
             return;
         }
 
@@ -58,7 +58,7 @@ class ModuleInstaller {
         $tmpZip = sys_get_temp_dir() . '/dash_module_' . $id . '.zip';
         $zipData = @file_get_contents($url);
         if (!$zipData) {
-            echo json_encode(array('status' => 'error', 'message' => 'Failed to download module.'));
+            echo json_encode(array('status' => 'error', 'message' => i18n_r('Dashboard/lang_Failed_download') . '.'));
             return;
         }
         file_put_contents($tmpZip, $zipData);
@@ -67,7 +67,7 @@ class ModuleInstaller {
         $zip = new ZipArchive();
         if ($zip->open($tmpZip) !== true) {
             @unlink($tmpZip);
-            echo json_encode(array('status' => 'error', 'message' => 'Failed to open zip file.'));
+            echo json_encode(array('status' => 'error', 'message' => i18n_r('Dashboard/lang_Failed_to_open') . '.'));
             return;
         }
 
@@ -99,11 +99,11 @@ class ModuleInstaller {
         @unlink($tmpZip);
 
         if (empty($installed)) {
-            echo json_encode(array('status' => 'error', 'message' => 'No valid module file found in zip.'));
+            echo json_encode(array('status' => 'error', 'message' => i18n_r('Dashboard/lang_No_valid_module') . '.'));
             return;
         }
 
-        echo json_encode(array('status' => 'ok', 'message' => 'Module installed successfully.', 'files' => $installed));
+        echo json_encode(array('status' => 'ok', 'message' => i18n_r('Dashboard/lang_Module_installed') . '.', 'files' => $installed));
     }
 
     // -------------------------------------------------------
@@ -211,9 +211,9 @@ class ModuleInstaller {
         </style>
 
         <?php if (empty($db)): ?>
-            <p class="mstore-empty">Could not load module database. Check your server can connect to the internet.</p>
+            <p class="mstore-empty"><?php echo i18n_r('Dashboard/lang_Could_not_load_db'); ?>.</p>
         <?php else: ?>
-            <input type="text" class="mstore-search" id="mstore-search" placeholder="🔎 Search modules..." />
+            <input type="text" class="mstore-search" id="mstore-search" placeholder="🔎 <?php echo i18n_r('Dashboard/lang_Search_Model'); ?>..." />
             <div class="mstore-grid" id="mstore-grid">
                     <?php foreach ($db as $mod):
                         $id        = htmlspecialchars($mod['id']);
@@ -242,19 +242,19 @@ class ModuleInstaller {
                                 <span class="mstore-version">
                                     v<?php echo $version; ?>
                                     <?php if ($hasUpdate): ?>
-                                        <span style="color:#856404;"> (installed: v<?php echo htmlspecialchars($localVer); ?>)</span>
+                                        <span style="color:#856404;"> (<?php echo i18n_r('Dashboard/lang_Installed'); ?>: v<?php echo htmlspecialchars($localVer); ?>)</span>
                                     <?php endif; ?>
                                 </span>
                                 <?php if ($isInstalled): ?>
-                                    <button class="mstore-btn mstore-btn-installed" disabled>✓ Installed</button>
+                                    <button class="mstore-btn mstore-btn-installed" disabled>✓ <?php echo i18n_r('Dashboard/lang_Installed'); ?></button>
                                 <?php elseif ($hasUpdate): ?>
                                     <button class="mstore-btn mstore-btn-update mstore-btn-install"
                                             data-id="<?php echo $id; ?>"
-                                            data-url="<?php echo $url; ?>">↑ Update</button>
+                                            data-url="<?php echo $url; ?>">↑ <?php echo i18n_r('Dashboard/lang_Update'); ?></button>
                                 <?php else: ?>
                                     <button class="mstore-btn mstore-btn-install"
                                             data-id="<?php echo $id; ?>"
-                                            data-url="<?php echo $url; ?>">Install</button>
+                                            data-url="<?php echo $url; ?>"><?php echo i18n_r('Dashboard/lang_Install'); ?></button>
                                 <?php endif; ?>
                                 <span class="mstore-msg" id="mstore-msg-<?php echo $id; ?>"></span>
                             </div>
@@ -274,7 +274,7 @@ class ModuleInstaller {
                 var isUpdate = self.classList.contains('mstore-btn-update');
 
                 self.disabled = true;
-                self.textContent = isUpdate ? 'Updating...' : 'Installing...';
+                self.textContent = isUpdate ? '<?php echo i18n_r('Dashboard/lang_Updating'); ?>...' : '<?php echo i18n_r('Dashboard/lang_Installing'); ?>...';
                 if (msg) msg.textContent = '';
 
                 var xhr = new XMLHttpRequest();
@@ -285,38 +285,38 @@ class ModuleInstaller {
                         var res = JSON.parse(xhr.responseText);
                         if (res.status === 'ok') {
                             self.className = 'mstore-btn mstore-btn-installed';
-                            self.textContent = '✓ ' + (isUpdate ? 'Updated' : 'Installed');
+                            self.textContent = '✓ ' + (isUpdate ? '<?php echo i18n_r('Dashboard/lang_Updated'); ?>' : '<?php echo i18n_r('Dashboard/lang_Installed'); ?>');
                             self.disabled = true;
                             if (msg) {
                                 msg.className = 'mstore-msg ok';
                                 // Countdown redirect
                                 var secs = 3;
-                                msg.textContent = 'Reloading in ' + secs + 's...';
+                                msg.textContent = '<?php echo i18n_r('Dashboard/lang_Reloading'); ?> ' + secs + 's...';
                                 var timer = setInterval(function() {
                                     secs--;
                                     if (secs <= 0) {
                                         clearInterval(timer);
                                         window.location.href = 'load.php?id=Dashboard&dashboard-settings&tab=modules';
                                     } else {
-                                        msg.textContent = 'Reloading in ' + secs + 's...';
+                                        msg.textContent = '<?php echo i18n_r('Dashboard/lang_Reloading'); ?> ' + secs + 's...';
                                     }
                                 }, 1000);
                             }
                         } else {
                             self.disabled = false;
-                            self.textContent = isUpdate ? '↑ Update' : 'Install';
+                            self.textContent = isUpdate ? '↑ <?php echo i18n_r('Dashboard/lang_Update'); ?>' : '<?php echo i18n_r('Dashboard/lang_Install'); ?>';
                             if (msg) { msg.className = 'mstore-msg error'; msg.textContent = res.message; }
                         }
                     } catch(e) {
                         self.disabled = false;
-                        self.textContent = isUpdate ? '↑ Update' : 'Install';
-                        if (msg) { msg.className = 'mstore-msg error'; msg.textContent = 'Unexpected error.'; }
+                        self.textContent = isUpdate ? '↑ <?php echo i18n_r('Dashboard/lang_Update'); ?>' : '<?php echo i18n_r('Dashboard/lang_Install'); ?>';
+                        if (msg) { msg.className = 'mstore-msg error'; msg.textContent = '<?php echo i18n_r('Dashboard/lang_Unexpected_error'); ?>.'; }
                     }
                 };
                 xhr.onerror = function() {
                     self.disabled = false;
-                    self.textContent = isUpdate ? '↑ Update' : 'Install';
-                    if (msg) { msg.className = 'mstore-msg error'; msg.textContent = 'Network error.'; }
+                    self.textContent = isUpdate ? '↑ <?php echo i18n_r('Dashboard/lang_Update'); ?>' : '<?php echo i18n_r('Dashboard/lang_Install'); ?>';
+                    if (msg) { msg.className = 'mstore-msg error'; msg.textContent = '<?php echo i18n_r('Dashboard/lang_Network_error'); ?>.'; }
                 };
                 xhr.send('dash_install_module=1&id=' + encodeURIComponent(id) + '&url=' + encodeURIComponent(url));
             });

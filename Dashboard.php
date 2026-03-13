@@ -78,10 +78,10 @@ function dash_page_type() {
 }
 
 add_action('nav-tab', 'createNavTab', array('dashboard', $Dashboard,
-    '<span title="Dashboard"><svg xmlns="http://www.w3.org/2000/svg" style="vertical-align:middle;" width="24" height="24" viewBox="0 0 24 24"><rect width="24" height="24" fill="none"/><path fill="currentColor" d="M6.25 3A3.25 3.25 0 0 0 3 6.25v11.5A3.25 3.25 0 0 0 6.25 21h5.772a6.5 6.5 0 0 1-.709-1.5H6.25a1.75 1.75 0 0 1-1.75-1.75V15.5h6.813a6.5 6.5 0 0 1 .709-1.5H10v-4h9.5v1.313a6.5 6.5 0 0 1 1.5.709V6.25A3.25 3.25 0 0 0 17.75 3zM4.5 6.25c0-.966.784-1.75 1.75-1.75H14v4H4.5zm0 3.75h4v4h-4zm15-1.5h-4v-4h2.25c.966 0 1.75.784 1.75 1.75zm-5.223 5.476a2 2 0 0 1-1.441 2.496l-.584.145a5.7 5.7 0 0 0 .006 1.807l.54.13a2 2 0 0 1 1.45 2.51l-.187.631c.44.386.94.7 1.485.922l.493-.519a2 2 0 0 1 2.899 0l.499.526a5.3 5.3 0 0 0 1.482-.913l-.198-.686a2 2 0 0 1 1.442-2.496l.583-.145a5.7 5.7 0 0 0-.006-1.807l-.54-.13a2 2 0 0 1-1.449-2.51l.186-.631a5.3 5.3 0 0 0-1.484-.922l-.493.518a2 2 0 0 1-2.9 0l-.498-.525c-.544.22-1.044.53-1.483.913zM17.5 19c-.8 0-1.45-.671-1.45-1.5c0-.828.65-1.5 1.45-1.5s1.45.672 1.45 1.5c0 .829-.65 1.5-1.45 1.5"/></svg></span>'
+    '<span title="' . i18n_r('Dashboard/lang_Title') . '"><svg xmlns="http://www.w3.org/2000/svg" style="vertical-align:middle;" width="24" height="24" viewBox="0 0 24 24"><rect width="24" height="24" fill="none"/><path fill="currentColor" d="M6.25 3A3.25 3.25 0 0 0 3 6.25v11.5A3.25 3.25 0 0 0 6.25 21h5.772a6.5 6.5 0 0 1-.709-1.5H6.25a1.75 1.75 0 0 1-1.75-1.75V15.5h6.813a6.5 6.5 0 0 1 .709-1.5H10v-4h9.5v1.313a6.5 6.5 0 0 1 1.5.709V6.25A3.25 3.25 0 0 0 17.75 3zM4.5 6.25c0-.966.784-1.75 1.75-1.75H14v4H4.5zm0 3.75h4v4h-4zm15-1.5h-4v-4h2.25c.966 0 1.75.784 1.75 1.75zm-5.223 5.476a2 2 0 0 1-1.441 2.496l-.584.145a5.7 5.7 0 0 0 .006 1.807l.54.13a2 2 0 0 1 1.45 2.51l-.187.631c.44.386.94.7 1.485.922l.493-.519a2 2 0 0 1 2.899 0l.499.526a5.3 5.3 0 0 0 1.482-.913l-.198-.686a2 2 0 0 1 1.442-2.496l.583-.145a5.7 5.7 0 0 0-.006-1.807l-.54-.13a2 2 0 0 1-1.449-2.51l.186-.631a5.3 5.3 0 0 0-1.484-.922l-.493.518a2 2 0 0 1-2.9 0l-.498-.525c-.544.22-1.044.53-1.483.913zM17.5 19c-.8 0-1.45-.671-1.45-1.5c0-.828.65-1.5 1.45-1.5s1.45.672 1.45 1.5c0 .829-.65 1.5-1.45 1.5"/></svg></span>'
 ));
 
-add_action('settings-sidebar', 'createSideMenu', array($Dashboard, 'Dashboard Settings <svg xmlns="http://www.w3.org/2000/svg" style="vertical-align:middle;" width="20" height="20" viewBox="0 0 24 24"><rect width="24" height="24" fill="none"/><path fill="currentColor" d="M6.25 3A3.25 3.25 0 0 0 3 6.25v11.5A3.25 3.25 0 0 0 6.25 21h5.772a6.5 6.5 0 0 1-.709-1.5H6.25a1.75 1.75 0 0 1-1.75-1.75V15.5h6.813a6.5 6.5 0 0 1 .709-1.5H10v-4h9.5v1.313a6.5 6.5 0 0 1 1.5.709V6.25A3.25 3.25 0 0 0 17.75 3zM4.5 6.25c0-.966.784-1.75 1.75-1.75H14v4H4.5zm0 3.75h4v4h-4zm15-1.5h-4v-4h2.25c.966 0 1.75.784 1.75 1.75zm-5.223 5.476a2 2 0 0 1-1.441 2.496l-.584.145a5.7 5.7 0 0 0 .006 1.807l.54.13a2 2 0 0 1 1.45 2.51l-.187.631c.44.386.94.7 1.485.922l.493-.519a2 2 0 0 1 2.899 0l.499.526a5.3 5.3 0 0 0 1.482-.913l-.198-.686a2 2 0 0 1 1.442-2.496l.583-.145a5.7 5.7 0 0 0-.006-1.807l-.54-.13a2 2 0 0 1-1.449-2.51l.186-.631a5.3 5.3 0 0 0-1.484-.922l-.493.518a2 2 0 0 1-2.9 0l-.498-.525c-.544.22-1.044.53-1.483.913zM17.5 19c-.8 0-1.45-.671-1.45-1.5c0-.828.65-1.5 1.45-1.5s1.45.672 1.45 1.5c0 .829-.65 1.5-1.45 1.5"/></svg>', 'dashboard-settings'));
+add_action('settings-sidebar', 'createSideMenu', array($Dashboard, i18n_r('Dashboard/lang_Settings') . ' <svg xmlns="http://www.w3.org/2000/svg" style="vertical-align:middle;" width="20" height="20" viewBox="0 0 24 24"><rect width="24" height="24" fill="none"/><path fill="currentColor" d="M6.25 3A3.25 3.25 0 0 0 3 6.25v11.5A3.25 3.25 0 0 0 6.25 21h5.772a6.5 6.5 0 0 1-.709-1.5H6.25a1.75 1.75 0 0 1-1.75-1.75V15.5h6.813a6.5 6.5 0 0 1 .709-1.5H10v-4h9.5v1.313a6.5 6.5 0 0 1 1.5.709V6.25A3.25 3.25 0 0 0 17.75 3zM4.5 6.25c0-.966.784-1.75 1.75-1.75H14v4H4.5zm0 3.75h4v4h-4zm15-1.5h-4v-4h2.25c.966 0 1.75.784 1.75 1.75zm-5.223 5.476a2 2 0 0 1-1.441 2.496l-.584.145a5.7 5.7 0 0 0 .006 1.807l.54.13a2 2 0 0 1 1.45 2.51l-.187.631c.44.386.94.7 1.485.922l.493-.519a2 2 0 0 1 2.899 0l.499.526a5.3 5.3 0 0 0 1.482-.913l-.198-.686a2 2 0 0 1 1.442-2.496l.583-.145a5.7 5.7 0 0 0-.006-1.807l-.54-.13a2 2 0 0 1-1.449-2.51l.186-.631a5.3 5.3 0 0 0-1.484-.922l-.493.518a2 2 0 0 1-2.9 0l-.498-.525c-.544.22-1.044.53-1.483.913zM17.5 19c-.8 0-1.45-.671-1.45-1.5c0-.828.65-1.5 1.45-1.5s1.45.672 1.45 1.5c0 .829-.65 1.5-1.45 1.5"/></svg>', 'dashboard-settings'));
 
 add_action('header', 'dash_reorder_tab');
 
@@ -286,7 +286,7 @@ function dash_main() {
 					<div class="pure-u-12-24">
 						<h3>
 							<svg xmlns="http://www.w3.org/2000/svg" style="vertical-align:bottom;" width="1.2em" height="1.2em" viewBox="0 0 24 24"><rect width="24" height="24" fill="none"/><path fill="currentColor" d="M6.25 3A3.25 3.25 0 0 0 3 6.25v11.5A3.25 3.25 0 0 0 6.25 21h5.772a6.5 6.5 0 0 1-.709-1.5H6.25a1.75 1.75 0 0 1-1.75-1.75V15.5h6.813a6.5 6.5 0 0 1 .709-1.5H10v-4h9.5v1.313a6.5 6.5 0 0 1 1.5.709V6.25A3.25 3.25 0 0 0 17.75 3zM4.5 6.25c0-.966.784-1.75 1.75-1.75H14v4H4.5zm0 3.75h4v4h-4zm15-1.5h-4v-4h2.25c.966 0 1.75.784 1.75 1.75zm-5.223 5.476a2 2 0 0 1-1.441 2.496l-.584.145a5.7 5.7 0 0 0 .006 1.807l.54.13a2 2 0 0 1 1.45 2.51l-.187.631c.44.386.94.7 1.485.922l.493-.519a2 2 0 0 1 2.899 0l.499.526a5.3 5.3 0 0 0 1.482-.913l-.198-.686a2 2 0 0 1 1.442-2.496l.583-.145a5.7 5.7 0 0 0-.006-1.807l-.54-.13a2 2 0 0 1-1.449-2.51l.186-.631a5.3 5.3 0 0 0-1.484-.922l-.493.518a2 2 0 0 1-2.9 0l-.498-.525c-.544.22-1.044.53-1.483.913zM17.5 19c-.8 0-1.45-.671-1.45-1.5c0-.828.65-1.5 1.45-1.5s1.45.672 1.45 1.5c0 .829-.65 1.5-1.45 1.5"/></svg>
-							Dashboard
+							<?php echo i18n_r('Dashboard/lang_Title'); ?>
 						</h3>
 					</div>
 					<div class="pure-u-12-24 text-right">
@@ -350,22 +350,22 @@ function dash_main() {
 		let greeting, icon;
 
 		if (hour < 4) {
-			greeting = "Burning the midnight oil";
+			greeting = "<?php echo i18n_r('Dashboard/lang_midnight_oil'); ?>";
 			icon = lateIcon();
 		} else if (hour < 7) {
-			greeting = "You should be in bed";
+			greeting = "<?php echo i18n_r('Dashboard/lang_in_bed'); ?>";
 			icon = tooearlyIcon();
 		} else if (hour < 12) {
-			greeting = "Good morning";
+			greeting = "<?php echo i18n_r('Dashboard/lang_Good_morning'); ?>";
 			icon = morningIcon();
 		} else if (hour < 17) {
-			greeting = "Good afternoon";
+			greeting = "<?php echo i18n_r('Dashboard/lang_Good_afternoon'); ?>";
 			icon = afternoonIcon();
 		} else if (hour < 21) {
-			greeting = "Good evening";
+			greeting = "<?php echo i18n_r('Dashboard/lang_Good_evening'); ?>";
 			icon = eveningIcon();
 		} else {
-			greeting = "Good night";
+			greeting = "<?php echo i18n_r('Dashboard/lang_Good_night'); ?>";
 			icon = nightIcon();
 		}
 
@@ -511,16 +511,16 @@ function dash_settings() {
 
             <!-- Tab bar -->
             <div class="dash-tabs">
-                <button class="dash-tab active" data-tab="layout"><svg data-src="<?php echo $SITEURL ?>plugins/Dashboard/assets/img/layout.svg" style="vertical-align:middle; width:24px; height:24px;"></svg> Layout</button>
-                <button class="dash-tab" data-tab="modules"><svg data-src="<?php echo $SITEURL ?>plugins/Dashboard/assets/img/download.svg" style="vertical-align:middle; width:24px; height:24px;"></svg> Module Store</button>
+                <button class="dash-tab active" data-tab="layout"><svg data-src="<?php echo $SITEURL ?>plugins/Dashboard/assets/img/layout.svg" style="vertical-align:middle; width:24px; height:24px;"></svg> <?php echo i18n_r("Dashboard/lang_Layout");?></button>
+                <button class="dash-tab" data-tab="modules"><svg data-src="<?php echo $SITEURL ?>plugins/Dashboard/assets/img/download.svg" style="vertical-align:middle; width:24px; height:24px;"></svg> <?php echo i18n_r("Dashboard/lang_Model_Repo");?></button>
             </div>
 
             <!-- Tab 1: Layout -->
             <div class="dash-tab-panel active" id="dash-panel-layout">
                 <?php if (empty($modules)): ?>
-                    <p style="color:#888;">No modules found in <code>plugins/Dashboard/modules/</code>.</p>
+                    <p style="color:#888;"><?php echo i18n_r("Dashboard/lang_No_modules_found");?> <code>plugins/Dashboard/modules/</code>.</p>
                 <?php else: ?>
-                    <p><strong>Available Modules</strong> — click to enable/disable, then drag to arrange:</p>
+                    <p><strong><?php echo i18n_r("Dashboard/lang_Available_Modules");?></strong> — <?php echo i18n_r("Dashboard/lang_Click_to_enable");?>:</p>
                     <div class="dash-module-list">
                     <?php foreach ($modules as $id => $mod): ?>
                         <span class="dash-module-item <?php echo in_array($id, $enabled) ? 'active' : ''; ?>"
@@ -531,7 +531,7 @@ function dash_settings() {
                     <?php endforeach; ?>
                     </div>
 
-                    <p class="gs-settings-hint">Drag and resize widgets below to set the layout. Only enabled (green) modules are shown.</p>
+                    <p class="gs-settings-hint"><?php echo i18n_r("Dashboard/lang_Drag_and_resize");?>.</p>
 
                     <div class="grid-stack" id="dash-settings-grid">
                     <?php foreach ($enabled as $id):
@@ -553,7 +553,7 @@ function dash_settings() {
                     <?php endforeach; ?>
                     </div>
 
-                    <button id="dash-save-btn">Save Layout</button>
+                    <button id="dash-save-btn"><?php echo i18n_r("Dashboard/lang_Save");?></button>
                     <span id="dash-save-status"></span>
                 <?php endif; ?>
             </div>
@@ -561,7 +561,7 @@ function dash_settings() {
             <!-- Tab 2: Module Repo -->
             <div class="dash-tab-panel" id="dash-panel-modules">
                 <div id="mstore-container">
-                    <p style="color:#aaa; font-size:13px;">Click to load available modules...</p>
+                    <p style="color:#aaa; font-size:13px;"><?php echo i18n_r("Dashboard/lang_Click_to_load");?>...</p>
                 </div>
             </div>
 
@@ -626,9 +626,9 @@ function dash_settings() {
             var status = document.getElementById('dash-save-status');
             try {
                 var res = JSON.parse(xhr.responseText);
-                status.textContent = res.status === 'ok' ? '✓ Saved' : '✗ Error saving';
+                status.textContent = res.status === 'ok' ? '✓ <?php echo i18n_r("Dashboard/lang_Saved");?>' : '✗ <?php echo i18n_r("Dashboard/lang_Error_saving");?>';
             } catch(e) {
-                status.textContent = '✗ Unexpected response';
+                status.textContent = '✗ <?php echo i18n_r("Dashboard/lang_Unexpected_response");?>';
             }
             setTimeout(function(){ status.textContent = ''; }, 3000);
         };
@@ -689,7 +689,7 @@ function dash_settings() {
         if (tabName !== 'modules' || mstoreLoaded) return;
         mstoreLoaded = true;
         var container = document.getElementById('mstore-container');
-        container.innerHTML = '<p style="color:#aaa; font-size:13px;">Loading modules...</p>';
+        container.innerHTML = '<p style="color:#aaa; font-size:13px;"><?php echo i18n_r("Dashboard/lang_Loading_modules");?>...</p>';
         var xhr = new XMLHttpRequest();
         xhr.open('POST', 'load.php?id=Dashboard&dashboard-settings');
         xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
@@ -701,14 +701,14 @@ function dash_settings() {
                     bindInstallButtons();
                     bindMstoreSearch();
                 } else {
-                    container.innerHTML = '<p style="color:#e74c3c;">Failed to load modules.</p>';
+                    container.innerHTML = '<p style="color:#e74c3c;"><?php echo i18n_r("Dashboard/lang_Failed_to_load");?>.</p>';
                 }
             } catch(e) {
-                container.innerHTML = '<p style="color:#e74c3c;">Unexpected error loading module repo.</p>';
+                container.innerHTML = '<p style="color:#e74c3c;"><?php echo i18n_r("Dashboard/lang_Unexpected_error_loading");?>.</p>';
             }
         };
         xhr.onerror = function() {
-            container.innerHTML = '<p style="color:#e74c3c;">Network error.</p>';
+            container.innerHTML = '<p style="color:#e74c3c;"><?php echo i18n_r("Dashboard/lang_Network_error");?>.</p>';
         };
         xhr.send('dash_load_mstore=1');
     }
@@ -728,7 +728,7 @@ function dash_settings() {
                 var isUpdate = self.classList.contains('mstore-btn-update');
 
                 self.disabled = true;
-                self.textContent = isUpdate ? 'Updating...' : 'Installing...';
+                self.textContent = isUpdate ? '<?php echo i18n_r("Dashboard/lang_Updating");?>...' : '<?php echo i18n_r("Dashboard/lang_Installing");?>...';
                 if (msg) msg.textContent = '';
 
                 var xhr = new XMLHttpRequest();
@@ -739,37 +739,37 @@ function dash_settings() {
                         var res = JSON.parse(xhr.responseText);
                         if (res.status === 'ok') {
                             self.className = 'mstore-btn mstore-btn-installed';
-                            self.textContent = isUpdate ? '✓ Updated' : '✓ Installed';
+                            self.textContent = isUpdate ? '✓ <?php echo i18n_r("Dashboard/lang_Updated");?>' : '✓ <?php echo i18n_r("Dashboard/lang_Installed");?>';
                             self.disabled = true;
                             if (msg) {
                                 msg.className = 'mstore-msg ok';
                                 var secs = 3;
-                                msg.textContent = 'Reloading in ' + secs + 's...';
+                                msg.textContent = '<?php echo i18n_r("Dashboard/lang_Reloading");?> ' + secs + 's...';
                                 var timer = setInterval(function() {
                                     secs--;
                                     if (secs <= 0) {
                                         clearInterval(timer);
                                         window.location.href = 'load.php?id=Dashboard&dashboard-settings&tab=modules';
                                     } else {
-                                        msg.textContent = 'Reloading in ' + secs + 's...';
+                                        msg.textContent = '<?php echo i18n_r("Dashboard/lang_Reloading");?> ' + secs + 's...';
                                     }
                                 }, 1000);
                             }
                         } else {
                             self.disabled = false;
-                            self.textContent = isUpdate ? '↑ Update' : 'Install';
+                            self.textContent = isUpdate ? '↑ <?php echo i18n_r("Dashboard/lang_Updated");?>' : '<?php echo i18n_r("Dashboard/lang_Install");?>';
                             if (msg) { msg.className = 'mstore-msg error'; msg.textContent = res.message; }
                         }
                     } catch(e) {
                         self.disabled = false;
-                        self.textContent = isUpdate ? '↑ Update' : 'Install';
-                        if (msg) { msg.className = 'mstore-msg error'; msg.textContent = 'Unexpected error.'; }
+                        self.textContent = isUpdate ? '↑ <?php echo i18n_r("Dashboard/lang_Update");?>' : '<?php echo i18n_r("Dashboard/lang_Install");?>';
+                        if (msg) { msg.className = 'mstore-msg error'; msg.textContent = '<?php echo i18n_r("Dashboard/lang_Unexpected_error");?>.'; }
                     }
                 };
                 xhr.onerror = function() {
                     self.disabled = false;
-                    self.textContent = isUpdate ? '↑ Update' : 'Install';
-                    if (msg) { msg.className = 'mstore-msg error'; msg.textContent = 'Network error.'; }
+                    self.textContent = isUpdate ? '↑ <?php echo i18n_r("Dashboard/lang_Update");?>' : '<?php echo i18n_r("Dashboard/lang_Install");?>';
+                    if (msg) { msg.className = 'mstore-msg error'; msg.textContent = '<?php echo i18n_r("Dashboard/lang_Network_error");?>.'; }
                 };
                 xhr.send('dash_install_module=1&id=' + encodeURIComponent(id) + '&url=' + encodeURIComponent(url));
             });
