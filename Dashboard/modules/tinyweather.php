@@ -1,8 +1,8 @@
 <?php
 /**
- * Module Name: Weather
+ * Module Name: TinyWeather
  * Module ID: tinyweather
- * Description: Shows available system and plugin updates.
+ * Description: Display the current weather, based on IP.
  * Version: 1.0
  * Default W: 4
  * Default H: 2
