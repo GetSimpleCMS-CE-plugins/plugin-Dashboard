@@ -9,6 +9,9 @@
  */
 if (!defined('IN_GS')) { die('You cannot load this page directly.'); }
 
+// Add $i18n_m for i18n lang files in Modules
+$i18n_m = dash_module_i18n('tinyweather');
+
 // Unique ID to avoid conflicts between modules (optional)
 $tw_uid = 'tw_' . substr(md5(__FILE__), 0, 6);
 ?>

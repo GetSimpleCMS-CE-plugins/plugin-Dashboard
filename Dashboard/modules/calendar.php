@@ -129,14 +129,14 @@ $uid = 'sc_' . substr(md5(__FILE__), 0, 6);
 
 <script>
 (function() {
-    var clockEl = document.getElementById("<?php echo $uid ?>-clock");
-    function updateClock() {
-        clockEl.textContent = new Intl.DateTimeFormat(navigator.language, {
-            timeStyle: 'medium'
-        }).format(new Date());
-    }
-    updateClock();
-    setInterval(updateClock, 1000);
+	var clockEl = document.getElementById("<?php echo $uid ?>-clock");
+	function updateClock() {
+		clockEl.textContent = new Intl.DateTimeFormat(navigator.language, {
+			timeStyle: 'medium'
+		}).format(new Date());
+	}
+	updateClock();
+	setInterval(updateClock, 1000);
 })();
 </script>
 
