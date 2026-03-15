@@ -507,7 +507,7 @@ function dash_settings() {
 			font-size: 13px;
 		}
 		#dash-save-btn:hover { background: #357abd; }
-		#dash-save-status { margin-left: 12px; font-size: 13px; color: #28a745; }
+		#dash-save-status { margin-left: 12px; font-size: 14px; color: #28a745; font-weight:600; }
 		.gs-settings-hint { font-size: 12px; color: #888; margin-bottom: 10px; }
 		#dash-settings-grid {border: #7EACDA solid 1px; border-radius: 5px;}
 	</style>
