@@ -2,14 +2,14 @@
 
 $i18n = [
 
-	'lang_Recently_Edited'		=>	'Recently Edited Pages',
-	'lang_Title'				=>	'Title',
-	'lang_Edited'				=>	'Edited',
-	'lang_Action'				=>	'Action',
+	'rp_lang_Recently_Edited'		=>	'Recently Edited Pages',
+	'rp_lang_Title'				=>	'Title',
+	'rp_lang_Edited'				=>	'Edited',
+	'rp_lang_Action'				=>	'Action',
 	
-	'lang_Edit'					=>	'Edit',
-	'lang_View'					=>	'View',
+	'rp_lang_Edit'					=>	'Edit',
+	'rp_lang_View'					=>	'View',
 	
-	'lang_No_pages'				=>	'No pages found',
+	'rp_lang_No_pages'				=>	'No pages found',
 	
 ];

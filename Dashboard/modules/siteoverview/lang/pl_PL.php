@@ -2,8 +2,8 @@
 
 $i18n = [
 
-	'lang_Pages'		=>	'Strony',
-	'lang_Uploads'		=>	'Przesłane pliki',
-	'lang_Users'		=>	'Użytkownicy',
+	'so_lang_Pages'		=>	'Strony',
+	'so_lang_Uploads'		=>	'Przesłane pliki',
+	'so_lang_Users'		=>	'Użytkownicy',
 	
 ];

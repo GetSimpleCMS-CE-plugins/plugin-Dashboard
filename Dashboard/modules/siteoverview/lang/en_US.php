@@ -2,8 +2,8 @@
 
 $i18n = [
 
-	'lang_Pages'		=>	'Pages',
-	'lang_Uploads'		=>	'Uploads',
-	'lang_Users'		=>	'Users',
+	'so_lang_Pages'		=>	'Pages',
+	'so_lang_Uploads'		=>	'Uploads',
+	'so_lang_Users'		=>	'Users',
 	
 ];
