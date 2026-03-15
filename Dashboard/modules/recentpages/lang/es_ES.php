@@ -3,7 +3,7 @@
 $i18n = [
 
 	'rp_lang_Recently_Edited'		=>	'Páginas Editadas Recientemente',
-	'rp_lang_Title'				=>	'Título',
+	'rp_lang_Title'					=>	'Título',
 	'rp_lang_Edited'				=>	'Editado',
 	'rp_lang_Action'				=>	'Acción',
 	

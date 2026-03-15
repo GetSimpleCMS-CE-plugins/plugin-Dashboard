@@ -9,10 +9,10 @@ $i18n = [
 	'st_lang_Time_Difference'	=>	'Diferencia horaria',
 	
 	'st_lang_not_set'			=>	'La zona horaria del servidor no está configurada',
-	'st_lang_Please_define'	=>	'Por favor, defina <code>GSTIMEZONE</code> en',
+	'st_lang_Please_define'		=>	'Por favor, defina <code>GSTIMEZONE</code> en',
 	
-	'st_lang_Same_timezone'	=>	'Misma zona horaria',
-	'st_lang_ahead'			=>	'adelantado',
+	'st_lang_Same_timezone'		=>	'Misma zona horaria',
+	'st_lang_ahead'				=>	'adelantado',
 	'st_lang_behind'			=>	'retrasado',
 	
 ];
