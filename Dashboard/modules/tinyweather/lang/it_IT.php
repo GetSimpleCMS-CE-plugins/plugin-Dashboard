@@ -2,6 +2,8 @@
 
 $i18n = [
 
+	'tw_title'		=>	'Meteo locale',
+	
 	'tw_lang_0_Clear'		=>	'Cielo sereno',
 	'tw_lang_1_Mainly'		=>	'Prevalentemente sereno',
 	'tw_lang_2_Partly'		=>	'Parzialmente nuvoloso',

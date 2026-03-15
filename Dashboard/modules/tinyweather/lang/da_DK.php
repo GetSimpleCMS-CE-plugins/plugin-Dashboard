@@ -2,6 +2,8 @@
 
 $i18n = [
 
+	'tw_title'		=>	'Lokalt vejr',
+	
 	'tw_lang_0_Clear'		=>	'Klar himmel',
 	'tw_lang_1_Mainly'		=>	'Overvejende klart',
 	'tw_lang_2_Partly'		=>	'Delvist skyet',

@@ -2,6 +2,8 @@
 
 $i18n = [
 
+	'tw_title'		=>	'Lokaal weer',
+	
 	'tw_lang_0_Clear'		=>	'Heldere hemel',
 	'tw_lang_1_Mainly'		=>	'Overwegend helder',
 	'tw_lang_2_Partly'		=>	'Half bewolkt',

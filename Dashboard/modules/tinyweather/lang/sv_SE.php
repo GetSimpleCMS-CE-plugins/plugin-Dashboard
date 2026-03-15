@@ -2,6 +2,8 @@
 
 $i18n = [
 
+	'tw_title'		=>	'Lokalt väder',
+	
 	'tw_lang_0_Clear'		=>	'Klart',
 	'tw_lang_1_Mainly'		=>	'Huvudsakligen klart',
 	'tw_lang_2_Partly'		=>	'Växlande molnighet',

@@ -2,6 +2,8 @@
 
 $i18n = [
 
+	'tw_title'		=>	'現地の天気',
+	
 	'tw_lang_0_Clear'		=>	'快晴',
 	'tw_lang_1_Mainly'		=>	'晴れ',
 	'tw_lang_2_Partly'		=>	'薄曇り',

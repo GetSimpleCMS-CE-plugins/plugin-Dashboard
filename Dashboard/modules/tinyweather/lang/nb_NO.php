@@ -2,6 +2,8 @@
 
 $i18n = [
 
+	'tw_title'		=>	'Lokalt vær',
+	
 	'tw_lang_0_Clear'		=>	'Klarvær',
 	'tw_lang_1_Mainly'		=>	'For det meste klart',
 	'tw_lang_2_Partly'		=>	'Delvis skyet',

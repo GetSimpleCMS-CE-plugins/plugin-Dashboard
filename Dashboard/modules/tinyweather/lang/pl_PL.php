@@ -2,6 +2,8 @@
 
 $i18n = [
 
+	'tw_title'		=>	'Pogoda lokalna',
+	
 	'tw_lang_0_Clear'		=>	'Bezchmurnie',
 	'tw_lang_1_Mainly'		=>	'Przeważnie bezchmurnie',
 	'tw_lang_2_Partly'		=>	'Częściowe zachmurzenie',

@@ -2,6 +2,8 @@
 
 $i18n = [
 
+	'tw_title'		=>	'Tempo local',
+	
 	'tw_lang_0_Clear'		=>	'Céu limpo',
 	'tw_lang_1_Mainly'		=>	'Principalmente limpo',
 	'tw_lang_2_Partly'		=>	'Parcialmente nublado',

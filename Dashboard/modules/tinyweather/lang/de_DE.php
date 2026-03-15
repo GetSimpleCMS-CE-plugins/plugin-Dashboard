@@ -2,6 +2,8 @@
 
 $i18n = [
 
+	'tw_title'		=>	'Lokales Wetter',
+	
 	'tw_lang_0_Clear'		=>	'Klarer Himmel',
 	'tw_lang_1_Mainly'		=>	'Überwiegend klar',
 	'tw_lang_2_Partly'		=>	'Teilweise bewölkt',
