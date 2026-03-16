@@ -22,7 +22,7 @@ $tw_uid = 'tw_' . substr(md5(__FILE__), 0, 6);
 	align-items: center;
 	gap: 14px;
 	font-family: sans-serif;
-	padding: 10px;
+	padding: 10px 10px 0 10px;
 }
 
 .weather-icon-wrap  {
