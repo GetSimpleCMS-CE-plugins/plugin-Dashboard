@@ -193,9 +193,20 @@ function dash_handle_save() {
 function dash_main() {
 	global $SITEURL, $USR;
 
-	$userData	= new SimpleXMLElement(file_get_contents(GSUSERSPATH . $USR . '.xml'));
-	$displayName = (string)$userData->NAME[0];
-	$displayName = htmlspecialchars($displayName !== '' ? $displayName : $USR);
+	$displayName = $USR ? htmlspecialchars($USR) : 'User';
+	if ($USR && defined('GSUSERSPATH')) {
+		$userFile = GSUSERSPATH . (function_exists('_id') ? _id($USR) : $USR) . '.xml';
+		$raw = @file_get_contents($userFile);
+		if ($raw !== false) {
+			libxml_use_internal_errors(true);
+			$userData = simplexml_load_string($raw);
+			libxml_clear_errors();
+			if ($userData) {
+				$name = (string)$userData->NAME[0];
+				if ($name !== '') $displayName = htmlspecialchars($name);
+			}
+		}
+	}
 
 	$layout  = dash_get_layout();
 	$enabled = isset($layout['enabled']) ? $layout['enabled'] : array();
