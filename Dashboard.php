@@ -12,7 +12,7 @@ register_plugin(
 	'1.0',
 	'risingisland',
 	'https://www.getsimple-ce.ovh/',
-	'Admin dashboard shown after login.',
+	'Customizable admin dashboard shown after login.',
 	dash_page_type(),
 	'dash_router'
 );
