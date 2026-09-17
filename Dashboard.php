@@ -446,6 +446,7 @@ function dash_settings() {
 	?>
 	<link rel="stylesheet" href="<?php echo $SITEURL ?>plugins/Dashboard/assets/css/gridstack.min.css"/>
 	<style>
+		#maincontent {width: 100% !important;}
 		#sidebar { display: none; }
 		.bodycontent { display: inline; }
 		h3 { font-style: normal; font-weight: 600 !important; }
